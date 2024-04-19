@@ -1,7 +1,5 @@
-import java.util.UUID;
 
-
-public class Freund extends Kartei {
+public class Freund {
     private final String identNr;
 	private String vorname;
     private String nachname;
@@ -14,9 +12,9 @@ public class Freund extends Kartei {
     private String strasse;
     private String hausnummer;
 
-    public Freund(String vorname, String nachname, String geburtsdatum, String telefon, String handy, String email, String ort, String plz, String strasse, String hausnummer) 
+    public Freund(String identNr, String vorname, String nachname, String geburtsdatum, String telefon, String handy, String email, String ort, String plz, String strasse, String hausnummer) 
     {
-        this.identNr = UUID.randomUUID().toString();
+        this.identNr = identNr;
     	this.vorname = vorname;
         this.nachname = nachname;
         this.geburtsdatum = geburtsdatum;
