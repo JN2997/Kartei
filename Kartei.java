@@ -2,48 +2,46 @@ import java.util.*;
 
 public class Kartei {
     private Map<String, Freund> freunde = new HashMap<>();
-    private int idCounter = 0;
+    private int idCounter = 1;
 
     public void freundHinzufuegen(Freund freund) 
     {
         freunde.put(freund.getIdentNr(), freund);
     }
 
-    public void freundAendern(String identNr, String vorname, String nachname, String geburtsdatum, String telefon, String handy, String email, String ort, String strasse, String hausnummer) 
+    public void freundAendern(String identNr, String[] neueAttribute) 
     {
         Freund freund = freunde.get(identNr);
-        if (freund != null) {
-            freund.setVorname(vorname);
-            freund.setNachname(nachname);
-            freund.setGeburtsdatum(geburtsdatum);
-            freund.setTelefon(telefon);
-            freund.setHandy(handy);
-            freund.setEmail(email);
-            freund.setOrt(ort);
-            freund.setStrasse(strasse);
-            freund.setHausnummer(hausnummer);
+        if (freund != null) 
+        {
+            freund.setVorname(neueAttribute[0]);
+            freund.setNachname(neueAttribute[1]);
+            freund.setGeburtsdatum(neueAttribute[2]);
+            freund.setTelefon(neueAttribute[3]);
+            freund.setHandy(neueAttribute[4]);
+            freund.setEmail(neueAttribute[5]);
+            freund.setOrt(neueAttribute[6]);
+            freund.setPlz(neueAttribute[7]);
+            freund.setStrasse(neueAttribute[8]);
+            freund.setHausnummer(neueAttribute[9]);
         }
-    }
+    }  
 
     public Freund freundSuchen(String identNr) 
     {
         return freunde.get(identNr);
     }
     
-    public String freundSuchenNachname(String nachname)
+    public String freundSuchenNachname(String nachname) 
     {
-		String temp = "";
-    	for (Freund freund : freunde.values()) 
-    	{
-
-    		if
-    		(freund.getNachname().equals(nachname))
-    		{
-    			temp = freund.getIdentNr();
-    			//System.out.println(freund.getIdentNr());
-    		}
-    	}
-    	return temp;
+        for (Freund freund : freunde.values()) 
+        {
+            if (freund.getNachname().equals(nachname)) 
+            {
+                return freund.getIdentNr();
+            }
+        }
+        return "";
     }
 
     public void freundLoeschen(String identNr) 
@@ -53,7 +51,7 @@ public class Kartei {
 
     public void telefonlisteAusgeben() {
         for (Freund freund : freunde.values()) {
-            System.out.println("Vorname: " + freund.getVorname() + ", Nachname: " + freund.getNachname() + ", Telefon: " + freund.getTelefon() + ", Handy: " + freund.getHandy());
+            System.out.println("ID: " + freund.getIdentNr() + "Vorname: " + freund.getVorname() + ", Nachname: " + freund.getNachname() + ", Telefon: " + freund.getTelefon() + ", Handy: " + freund.getHandy());
         }
     }
 
@@ -63,6 +61,6 @@ public class Kartei {
 
     public String generiereIdentNr() 
     {
-    	return String.format("ID%03d", idCounter++);
+    	return String.format("ID%d", idCounter++);
     }
 }

@@ -65,11 +65,8 @@ public class Freund {
     public String getHausnummer() {
         return this.hausnummer;
     }
-
     // Setter-Methoden
-//    public void setIdentNr(String identNr) {
-//        this.identNr = identNr;
-//    }
+
     public void setVorname(String vorname) {
         this.vorname = vorname;
     }
@@ -107,6 +104,40 @@ public class Freund {
         this.hausnummer = hausnummer;
     }
 
-
+    //Sondermethoden um Attribute einzeln zu erhalten, aber alle am Stück abzufragen
+    public String getAttribut(String attributName) 
+    {
+        switch (attributName) 
+        {
+            case "vorname":
+                return vorname;
+            case "nachname":
+                return nachname;
+            case "geburtsdatum":
+                return geburtsdatum;
+            case "telefon":
+                return telefon;
+            case "handy":
+                return handy;
+            case "email":
+                return email;
+            case "ort":
+                return ort;
+            case "plz":
+                return plz;
+            case "strasse":
+                return strasse;
+            case "hausnummer":
+                return hausnummer;
+            default:
+                return null;
+        }
+    }
+    //Sondermethode um alle Attribute auszugeben
+    public String getAlleAttribute() 
+    {
+        return "\nID-Nummer: " + identNr + "\nVorname: " + vorname + "\nNachname: " + nachname + "\nGeburtsdatum: " + geburtsdatum + "\nTelefon: " + telefon + "\nHandy: " + handy + "\nEmail: " + email + "\nOrt: " + ort + "\nPLZ: " + plz + "\nStrasse: " + strasse + "\nHausnummer: " + hausnummer + "\n";
+    }
+    
     
 }
