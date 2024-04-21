@@ -28,7 +28,7 @@ public class Kartei {
     }  
 
     public Freund freundSuchen(String identNr) 
-    {
+    { 
         return freunde.get(identNr);
     }
     
@@ -49,10 +49,19 @@ public class Kartei {
         freunde.remove(identNr);
     }
 
-    public void telefonlisteAusgeben() {
-        for (Freund freund : freunde.values()) {
-            System.out.println("ID: " + freund.getIdentNr() + "Vorname: " + freund.getVorname() + ", Nachname: " + freund.getNachname() + ", Telefon: " + freund.getTelefon() + ", Handy: " + freund.getHandy());
-        }
+    public void telefonlisteAusgeben() 
+    {	
+    	if (freunde.isEmpty())
+    	{
+    		System.out.println("\nKeine Freunde in der Kartei vorhanden\n");
+    	}
+    	else
+    	{
+	        for (Freund freund : freunde.values()) 
+	        {
+	            System.out.println("ID: " + freund.getIdentNr() + "Vorname: " + freund.getVorname() + ", Nachname: " + freund.getNachname() + ", Telefon: " + freund.getTelefon() + ", Handy: " + freund.getHandy());
+	        }
+    	}
     }
 
     public int anzahlFreunde() {
