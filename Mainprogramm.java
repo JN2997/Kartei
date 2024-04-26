@@ -12,7 +12,9 @@ public class Mainprogramm
 	        try
 	        {
 	        	//Menüausgabe
-	            System.out.println("Drücken Sie eine Zahl und bestätigen Sie mit Enter, um einen Menüpunkt auszuwählen.\n1: Freund hinzufügen \n2: Freund ändern \n3: Freund löschen \n4: Freund suchen \n5: Telefonliste ausgeben \n6: Anzahl der Freunde anzeigen \n7: Beenden");
+	            System.out.println("Drücken Sie eine Zahl und bestätigen Sie mit Enter, um einen Menüpunkt auszuwählen."
+	            		+ "\n1: Freund hinzufügen \n2: Freund ändern \n3: Freund löschen \n4: Freund suchen "
+	            		+ "\n5: Telefonliste ausgeben \n6: Anzahl der Freunde anzeigen \n7: Beenden");
 	            int auswahl = scanner.nextInt(); // Einlesen Benutzerauswahl
 	            scanner.nextLine();  
 	
@@ -39,18 +41,20 @@ public class Mainprogramm
 	                    String plz = scanner.nextLine().trim();
 	                    System.out.print("Straße: ");
 	                    String strasse = scanner.nextLine().trim();
-	                    System.out.print("Hausnummer: ");
-	                    String hausnummer = scanner.nextLine().trim();
 	                    // Erstellen einer neuen Freund-Instanz mit den eingegebenen Details
-	                    Freund freund = new Freund(kartei.generiereIdentNr(), vorname, nachname, geburtsdatum, telefon, handy, email, ort, plz, strasse, hausnummer);
+	                    Freund freund = new Freund(kartei.generiereIdentNr(), vorname, nachname, geburtsdatum, telefon, 
+	                    															handy, email, ort, plz, strasse);
 	                    kartei.freundHinzufuegen(freund); //Freund-Objekt zur Kartei hinzufügen
-	                    System.out.println("\nIhr Freund wurde mit folgenden Daten erfolgreich hinzugefügt: " + freund.getAlleAttribute()); //Bestätigung der Speicherung + Ausgabe
+	                    //Bestätigung der Speicherung + Ausgabe
+	                    System.out.println("\nIhr Freund wurde mit folgenden Daten erfolgreich hinzugefügt: " + 
+	                    														freund.getAlleAttribute()); 
 	                    break;
 	                    
 	                case 2: //Freund ändern
 	                    while (true) 
 	                    {
-	                        System.out.println("Geben Sie die ID des Freundes ein, den Sie ändern möchten oder 'zurück', um zum Hauptmenü zurückzukehren:");
+	                        System.out.println("Geben Sie die ID des Freundes ein, den Sie ändern möchten oder 'zurück', "
+	                        		+ "um zum Hauptmenü zurückzukehren:");
 	                        String identNr1 = scanner.nextLine(); //ID kann eingegeben werden oder zurück ins Hauptmenü
 
 	                        if (identNr1.equalsIgnoreCase("zurück")) //Anweisung um zurück ins Hauptmenü zu gelangen
@@ -58,7 +62,7 @@ public class Mainprogramm
 	                            break;
 	                        }
 
-	                        if (!identNr1.matches("ID\\d+"))  //Falls etwas anderes als eine ID eingegeben wird, wird dieser Fehler gecatcht
+	                        if (!identNr1.matches("ID\\d+"))  //Keine ID Eingabe -> Fehler gecacht
 	                        {
 	                            System.out.println("Fehlerhafte Eingabe, bitte geben Sie eine ID ein, die das Format ID + Zahl hat.\n");
 	                            continue;
@@ -66,17 +70,19 @@ public class Mainprogramm
 
 	                        Freund alterFreund = kartei.freundSuchen(identNr1); //ID wird in der Kartei gesucht
 
-	                        if (alterFreund == null)  //Wenn kein Freund unter der ID gefunden wird, dann wird ebenfalls eine Fehlermeldung ausgegeben
+	                        if (alterFreund == null)  //Kein Freund unter ID gefunden = Fehlermeldung
 	                        {
 	                            System.out.println("Kein Freund unter dieser ID gefunden, versuchen Sie es erneut.\n");
 	                            continue;
 	                        }
-	                    String[] attribute = new String[]{"vorname", "nachname", "geburtsdatum", "telefon", "handy", "email", "ort", "plz", "strasse", "hausnummer"};
-	                    String[] aendern = new String[10];
+	                        String[] attribute = new String[]{"vorname", "nachname", "geburtsdatum", "telefon", "handy", 
+	                        															"email", "ort", "plz", "strasse"};
+	                        String[] aendern = new String[9];
 	                    
 	                    for (int i = 0; i < attribute.length; i++) // Schleife durch alle Attribute, bis alle Attribute einmal angezeigt wurden
 	                    {	//Eingabe des neuen Attributwerts und Anzeigen des aktuellen Wertes
-	                        System.out.println("Geben Sie " + attribute[i] + " ein und bestätigen mit Enter, aktueller Wert: " + alterFreund.getAttribut(attribute[i]) + ":"); 
+	                        System.out.println("Geben Sie " + attribute[i] + " ein und bestätigen mit Enter, aktueller Wert: " 
+	                        													+ alterFreund.getAttribut(attribute[i]) + ":"); 
 	                        String eingabe = scanner.nextLine();
 	                        // Wenn die Eingabe leer ist, wird der alte Wert beibehalten, ansonsten wird der neue Wert gesetzt
 	                        aendern[i] = eingabe.isEmpty() ? alterFreund.getAttribut(attribute[i]) : eingabe; 

@@ -1,5 +1,6 @@
 
-public class Freund {
+public class Freund 
+{	//Attribute, wovon identNr nicht veränderbar ist
     private final String identNr;
 	private String vorname;
     private String nachname;
@@ -10,9 +11,10 @@ public class Freund {
     private String plz;
     private String ort;
     private String strasse;
-    private String hausnummer;
-
-    public Freund(String identNr, String vorname, String nachname, String geburtsdatum, String telefon, String handy, String email, String ort, String plz, String strasse, String hausnummer) 
+    
+    //Konstruktor für ein Freund-Objekt
+    public Freund(String identNr, String vorname, String nachname, String geburtsdatum, 
+    		String telefon, String handy, String email, String ort, String plz, String strasse) 
     {
         this.identNr = identNr;
     	this.vorname = vorname;
@@ -24,87 +26,104 @@ public class Freund {
         this.plz = plz;
         this.ort = ort;
         this.strasse = strasse;
-        this.hausnummer = hausnummer;
     }
-    public String getIdentNr() {
+    
+    //Getter-Methoden
+    
+    public String getIdentNr() 
+    {
         return this.identNr;
     }
-    public String getVorname() {
+    public String getVorname() 
+    {
         return this.vorname;
     }
 
-    public String getNachname() {
+    public String getNachname() 
+    {
         return this.nachname;
     }
 
-    public String getGeburtsdatum() {
+    public String getGeburtsdatum() 
+    {
         return this.geburtsdatum;
     }
 
-    public String getTelefon() {
+    public String getTelefon() 
+    {
         return this.telefon;
     }
 
-    public String getHandy() {
+    public String getHandy() 
+    {
         return this.handy;
     }
 
-    public String getEmail() {
+    public String getEmail() 
+    {
         return this.email;
     }
 
-    public String getOrt() {
+    public String getOrt() 
+    {
         return this.ort;
     }
-    public String getPlz() {
+    public String getPlz() 
+    {
         return this.plz;
     }
-    public String getStrasse() {
+    public String getStrasse() 
+    {
         return this.strasse;
     }
-    public String getHausnummer() {
-        return this.hausnummer;
-    }
+
     // Setter-Methoden
 
-    public void setVorname(String vorname) {
+    public void setVorname(String vorname) 
+    {
         this.vorname = vorname;
     }
 
-    public void setNachname(String nachname) {
+    public void setNachname(String nachname) 
+    {
         this.nachname = nachname;
     }
 
-    public void setGeburtsdatum(String geburtsdatum) {
+    public void setGeburtsdatum(String geburtsdatum) 
+    {
         this.geburtsdatum = geburtsdatum;
     }
 
-    public void setTelefon(String telefon) {
+    public void setTelefon(String telefon) 
+    {
         this.telefon = telefon;
     }
 
-    public void setHandy(String handy) {
+    public void setHandy(String handy) 
+    {
         this.handy = handy;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) 
+    {
         this.email = email;
     }
 
-    public void setOrt(String ort) {
+    public void setOrt(String ort) 
+    {
         this.ort = ort;
     }
-    public void setPlz(String plz) {
+    public void setPlz(String plz) 
+    {
         this.plz = plz;
     }
-    public void setStrasse(String strasse) {
+    public void setStrasse(String strasse) 
+    {
         this.strasse = strasse;
     }
-    public void setHausnummer(String hausnummer) {
-        this.hausnummer = hausnummer;
-    }
 
-    //Sondermethoden um Attribute einzeln zu erhalten, aber alle am Stück abzufragen
+
+    //Sondermethoden um den Abfrage Prozess in Case 2 "Freund aendern" zu vereinfachen und nicht jede Getter-Methode einzeln aufzurufen
     public String getAttribut(String attributName) 
     {
         switch (attributName) 
@@ -127,16 +146,15 @@ public class Freund {
                 return plz;
             case "strasse":
                 return strasse;
-            case "hausnummer":
-                return hausnummer;
             default:
                 return null;
         }
     }
-    //Sondermethode um alle Attribute auszugeben
+    //Sondermethode um alle Attribute auszugeben und nicht jede Getter-Methode einzeln aufzurufen
     public String getAlleAttribute() 
     {
-        return "\nID-Nummer: " + identNr + "\nVorname: " + vorname + "\nNachname: " + nachname + "\nGeburtsdatum: " + geburtsdatum + "\nTelefon: " + telefon + "\nHandy: " + handy + "\nEmail: " + email + "\nOrt: " + ort + "\nPLZ: " + plz + "\nStrasse: " + strasse + "\nHausnummer: " + hausnummer + "\n";
+        return "\nID-Nummer: " + identNr + "\nVorname: " + vorname + "\nNachname: " + nachname + "\nGeburtsdatum: " + geburtsdatum + "\nTelefon: " + 
+        		telefon + "\nHandy: " + handy + "\nEmail: " + email + "\nOrt: " + ort + "\nPLZ: " + plz + "\nStrasse: " + strasse + "\nHausnummer: " + "\n";
     }
     
     
